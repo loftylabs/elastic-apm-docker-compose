@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.1
+    ports:
+      - 9200:9200
+    volumes:
+      - es-apm-data:/es-apm-data
+  
+  apm:
+    image: elastic/apm-server:6.3.1
+    ports:
+      - 8200:8200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.3.1
+    ports:
+      - 5601:5601
+
+volumes:
+  es-apm-data:
